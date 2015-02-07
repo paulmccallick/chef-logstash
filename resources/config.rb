@@ -16,5 +16,5 @@ attribute :variables,   kind_of: Hash, default: {}
 attribute :owner,       kind_of: String
 attribute :group,       kind_of: String
 attribute :mode,        kind_of: String
-attribute :path,        kind_of: String
+attribute :path,        kind_of: String, default:
 attribute :templates_cookbook,    kind_of: String

@@ -1,6 +1,6 @@
 class Chef
   class Provider
-    class LogstashServiceUpstart < LogstashServiceBase
+    class LogstashServiceUpstart < LogstashServiceProviderBase
       action :enable do
         tp = template "/etc/init/#{new_resource.service_name}.conf" do
           mode      '0644'

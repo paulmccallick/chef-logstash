@@ -1,6 +1,6 @@
 class Chef
   class Provider
-    class LogstashServiceSysvinit < LogstashServiceBase
+    class LogstashServiceSysvinit < LogstashServiceProviderBase
       action :enable do
         tp = template "/etc/init.d/#{new_resource.service_name}" do
           source "init/sysvinit/#{new_resource.install_type}.erb"

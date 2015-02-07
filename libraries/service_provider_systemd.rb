@@ -1,6 +1,6 @@
 class Chef
   class Provider
-    class LogstashServiceSystemd < LogstashServiceBase
+    class LogstashServiceSystemd < LogstashServiceProviderBase
       action :enable do
 
         ex = execute 'reload-systemd' do

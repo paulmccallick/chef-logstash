@@ -1,6 +1,6 @@
 class Chef
   class Provider
-    class LogstashServiceRunit < LogstashServiceBase
+    class LogstashServiceRunit < LogstashServiceProviderBase
 
       action :enable do
         svc = svc_vars

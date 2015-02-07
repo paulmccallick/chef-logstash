@@ -13,7 +13,7 @@ include Chef::Mixin::ShellOut
 # Creates a provider for the splunk_app resource.
 class Chef
   class Provider
-    class LogstashServiceBase < Chef::Provider::LWRPBase
+    class LogstashServiceProviderBase < Chef::Provider::LWRPBase
 
       action :restart do
         new_resource.updated_by_last_action(service_action(:restart))

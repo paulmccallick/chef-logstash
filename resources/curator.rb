@@ -9,10 +9,10 @@ actions :create, :delete
 
 default_action :create if defined?(default_action)
 
-attribute :instance,      kind_of: String, name_attribute: true
-attribute :days_to_keep,  kind_of: String
-attribute :minute,        kind_of: String
-attribute :hour,          kind_of: String
-attribute :log_file,      kind_of: String
-attribute :user,          kind_of: String
-attribute :bin_dir,       kind_of: String
+attribute :instance,      kind_of: String, name_attribute: true, default: 'server'
+attribute :days_to_keep,  kind_of: Integer, default: 31
+attribute :minute,        kind_of: String, default: '0'
+attribute :hour,          kind_of: String, default: '*'
+attribute :log_file,      kind_of: String, default: '/dev/null'
+attribute :user,          kind_of: String, default: 'logstash' 
+attribute :bin_dir,       kind_of: String, default: '/usr/local/bin'

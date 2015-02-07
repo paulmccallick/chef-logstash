@@ -10,24 +10,15 @@ require 'chef/mixin/shell_out'
 require 'chef/mixin/language'
 include Chef::Mixin::ShellOut
 
-def load_current_resource
-  @instance = new_resource.instance || 'default'
-  @days_to_keep = new_resource.days_to_keep || Logstash.get_attribute_or_default(node, @instance, 'curator_days_to_keep')
-  @minute = new_resource.minute || Logstash.get_attribute_or_default(node, @instance, 'curator_cron_minute')
-  @hour = new_resource.hour || Logstash.get_attribute_or_default(node, @instance, 'curator_cron_hour')
-  @log_file = new_resource.log_file || Logstash.get_attribute_or_default(node, @instance, 'curator_cron_log_file')
-  @user = new_resource.user || Logstash.get_attribute_or_default(node, @instance, 'user')
-  @bin_dir = new_resource.user || Logstash.get_attribute_or_default(node, @instance, 'curator_bin_dir')
-end
 
 action :create do
-  cur_instance = @instance
-  cur_days_to_keep = @days_to_keep
-  cur_log_file = @log_file
-  cur_hour = @hour
-  cur_minute = @minute
-  cur_user = @user
-  cur_bin_dir = @bin_dir
+  cur_instance      =  new_resource.instance
+  cur_days_to_keep  =  new_resource.days_to_keep
+  cur_log_file      =  new_resource.log_file
+  cur_hour          =  new_resource.hour
+  cur_minute        =  new_resource.minute
+  cur_user          =  new_resource.user
+  cur_bin_dir       =  new_resource.bin_dir
 
   @run_context.include_recipe 'python::pip'
 
@@ -48,13 +39,13 @@ action :create do
 end
 
 action :delete do
-  cur_instance = @instance
-  cur_days_to_keep = @days_to_keep
-  cur_log_file = @log_file
-  cur_hour = @hour
-  cur_minute = @minute
-  cur_user = @user
-  cur_bin_dir = @bin_dir
+  cur_instance      =  new_resource.instance
+  cur_days_to_keep  =  new_resource.days_to_keep
+  cur_log_file      =  new_resource.log_file
+  cur_hour          =  new_resource.hour
+  cur_minute        =  new_resource.minute
+  cur_user          =  new_resource.user
+  cur_bin_dir       =  new_resource.bin_dir
 
   @run_context.include_recipe 'python::pip'
 

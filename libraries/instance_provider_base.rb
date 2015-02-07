@@ -20,6 +20,8 @@ class Chef
       end
 
       action :delete do
+        ls = ls_vars
+
         idr = directory new_resource.instance_dir do
           recursive   true
           action      :delete

@@ -10,6 +10,7 @@ require 'chef/mixin/shell_out'
 require 'chef/mixin/language'
 include Chef::Mixin::ShellOut
 
+# Creates a provider for the splunk_app resource.
 class Chef
   class Provider
     class LogstashServiceBase < Chef::Provider::LWRPBase

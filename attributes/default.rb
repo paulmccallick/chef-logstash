@@ -37,11 +37,6 @@ default['logstash']['instance_default']['log_file']   = 'logstash.log'
 default['logstash']['instance_default']['java_home']  = '/usr/lib/jvm/java-6-openjdk' # openjdk6 on ubuntu
 default['logstash']['instance_default']['xms']        = "#{(node['memory']['total'].to_i * 0.2).floor / 1024}M"
 default['logstash']['instance_default']['xmx']        = "#{(node['memory']['total'].to_i * 0.6).floor / 1024}M"
-default['logstash']['instance_default']['java_opts']  = ''
-default['logstash']['instance_default']['gc_opts']    = '-XX:+UseParallelOldGC'
-default['logstash']['instance_default']['ipv4_only']  = false
-default['logstash']['instance_default']['debug']      = false
-default['logstash']['instance_default']['workers']    = 1
 
 default['logstash']['instance_default']['pattern_templates_cookbook']  = 'logstash'
 default['logstash']['instance_default']['pattern_templates']           = {}
@@ -58,12 +53,6 @@ default['logstash']['instance_default']['config_templates_variables'] = {}
 default['logstash']['instance_default']['init_method'] = 'runit'
 default['logstash']['instance_default']['service_templates_cookbook']  = 'logstash'
 
-# default locations for runit templates
-default['logstash']['instance_default']['runit_run_template_name'] = 'logstash'
-default['logstash']['instance_default']['runit_log_template_name'] = 'logstash'
-
-default['logstash']['instance_default']['limit_nofile_soft']  = 65550
-default['logstash']['instance_default']['limit_nofile_hard']  = 65550
 
 # roles/flags for various autoconfig/discovery components
 default['logstash']['instance_default']['enable_embedded_es'] = false

@@ -28,6 +28,7 @@ attribute :limit_nofile_soft, kind_of: String, default: 65550
 
 
 # dynamic attribute defaults are beyond the lwrp syntax
+
 def service_name( arg=nil )
   if arg.nil? and @service_name.nil?
     "logstash_#{instance}"
@@ -36,11 +37,26 @@ def service_name( arg=nil )
   end
 end
 
-# dynamic attribute defaults are beyond the lwrp syntax
 def description( arg=nil )
   if arg.nil? and @description.nil?
     @service_name
   else
     set_or_return( description arg, :kind_of => String )
+  end
+end
+
+def max_heap( arg=nil )
+  if arg.nil? and @max_heap.nil?
+    "#{(node['memory']['total'].to_i * 0.6).floor / 1024}M"
+  else
+    set_or_return( max_heap arg, :kind_of => String )
+  end
+end
+
+def min_heap( arg=nil )
+  if arg.nil? and @min_heap.nil?
+    "#{(node['memory']['total'].to_i * 0.2).floor / 1024}M"
+  else
+    set_or_return( min_heap arg, :kind_of => String )
   end
 end

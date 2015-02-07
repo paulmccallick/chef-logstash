@@ -9,6 +9,7 @@ actions :enable, :start, :restart, :reload, :stop
 
 default_action :enable if defined?(default_action)
 
+attribute :provider, default: Chef::Provider::LogstashServiceRunit
 attribute :instance, kind_of: String, name_attribute: true, required: true
 attribute :command, kind_of: String
 attribute :args, kind_of: Array

@@ -9,15 +9,10 @@ actions :enable, :start, :restart, :reload, :stop
 
 default_action :enable if defined?(default_action)
 
-attribute :instance, kind_of: String, name_attribute: true
-attribute :method, kind_of: String
+attribute :instance, kind_of: String, name_attribute: true, required: true
 attribute :command, kind_of: String
 attribute :args, kind_of: Array
-attribute :description, kind_of: String
-attribute :user, kind_of: String
-attribute :group, kind_of: String
-attribute :runit_run_template_name, kind_of: String, default: 'logstash'
-attribute :runit_log_template_name, kind_of: String, default: 'logstash'
+attribute :java_opts, kind_of: String, default: ''
 attribute :basedir, kind_of: String, default: '/opt/logstash'
 attribute :user, kind_of: String, default: 'logstash'
 attribute :group, kind_of: String, default: 'logstash'

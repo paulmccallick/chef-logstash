@@ -5,30 +5,30 @@ action :enable do
   @run_context.include_recipe 'runit::default'
   ri = runit_service svc[:service_name] do
     options(
-      name: svc[:name],
-      home: svc[:home],
-      max_heap: svc[:max_heap],
-      min_heap: svc[:min_heap],
-      gc_opts: svc[:gc_opts],
-      java_opts: svc[:java_opts],
-      ipv4_only: svc[:ipv4_only],
-      debug: svc[:debug],
-      log_file: svc[:log_file],
-      workers: svc[:workers],
-      install_type: svc[:install_type],
-      supervisor_gid: svc[:supervisor_gid],
-      user: svc[:user],
-      web_address: svc[:web_address],
-      web_port: svc[:web_port]
+      name:             new_resource.name,
+      home:             home,
+      max_heap:         new_resource.max_heap,
+      min_heap:         new_resource.min_heap,
+      gc_opts:          new_resource.gc_opts,
+      java_opts:        new_resource.java_opts,
+      ipv4_only:        new_resource.ipv4_only,
+      debug:            new_resource.debug,
+      log_file:         new_resource.log_file,
+      workers:          new_resource.workers,
+      install_type:     new_resource.install_type,
+      supervisor_gid:   new_resource.supervisor_gid,
+      user:             new_resource.user,
+      web_address:      new_resource.web_address,
+      web_port:         new_resource.web_port
     )
-    cookbook  svc[:templates_cookbook]
-    run_template_name svc[:runit_run_template_name]
-    log_template_name svc[:runit_log_template_name]
+    run_template_name   'logstash'
+    log_template_name   'logstash'
   end
+
   new_resource.updated_by_last_action(ri.updated_by_last_action?)
 end
 
 def service_for_actions
   @run_context.include_recipe 'runit::default'
-  runit_service svc[:service_name]
+  runit_service new_resource.service_name
 end

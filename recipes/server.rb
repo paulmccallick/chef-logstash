@@ -23,6 +23,9 @@ logstash_service name do
 end
 
 logstash_config name do
+  inputs  node['logstash']['inputs']
+  filters node['logstash']['filters']
+  outputs node['logstash']['outputs']
   action [:create]
   notifies :restart, "logstash_service[#{name}]"
 end

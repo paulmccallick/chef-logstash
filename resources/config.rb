@@ -17,6 +17,11 @@ attribute :outputs  , kind_of: Hash   , default: {}
 attribute :owner    , kind_of: String, default: 'logstash'
 attribute :group    , kind_of: String, default: 'logstash'
 attribute :mode     , kind_of: String, default: '0644'
+# es_output value can be :none, :query, :embedded, or :server
+attribute :es_output     , kind_of: [ Symbol], default: :none
+attribute :es_server     , kind_of: [String]
+attribute :es_query     , kind_of: [String]
+
 
 def path( arg=nil )
   if arg.nil? and @path.nil?
